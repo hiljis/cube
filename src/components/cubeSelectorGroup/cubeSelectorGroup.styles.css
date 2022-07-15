@@ -1,0 +1,19 @@
+.cubeSelector__group {
+	height: 90px;
+	width: 150px;
+	grid-column: 2 / 3;
+	grid-row: 4 / 5;
+	padding: 20px;
+	align-self: end;
+	justify-self: start;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	opacity: 0.2;
+
+	transition: opacity 0.2s;
+}
+
+.cubeSelector__group:hover {
+	opacity: 1;
+}

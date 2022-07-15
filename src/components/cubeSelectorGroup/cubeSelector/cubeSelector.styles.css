@@ -1,0 +1,46 @@
+.cubeSelector {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	cursor: pointer;
+}
+
+.cubeSelector::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	content: '';
+	width: 100%;
+	height: 100%;
+	border: 1px solid blue;
+	border-radius: 1000px;
+	opacity: 0;
+}
+
+.cubeSelector:hover::after {
+	opacity: 1;
+	border: 1px solid rgb(202, 202, 202);
+}
+
+.cubeSelector.active:hover::after {
+	border: 1px solid blue;
+}
+
+.cubeSelector.active::after {
+	opacity: 1;
+}
+
+.cubeSelector.parent > img {
+	width: 30px;
+	height: 30px;
+	margin: auto;
+}
+
+.cubeSelector.child > img {
+	width: 20px;
+	height: 20px;
+	margin: auto;
+}

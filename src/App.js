@@ -1,58 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Cube } from './components/cube/cube.component.jsx';
 import './App.css';
+import { BurgerButton } from './components/burgerButton/burgerButton.component';
+import { ControlButton } from './components/controlButton/controlButton.component';
+import { Grid } from './components/grid/grid.component';
+import { Menu } from './components/menu/menu.component';
+import { CubeSelectorGroup } from './components/cubeSelectorGroup/cubeSelectorGroup.component.jsx';
+import { ThemeVariables } from './utils/themeVariables.js';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<ThemeVariables />
+			<Grid>
+				<Menu />
+				<BurgerButton />
+				<CubeSelectorGroup />
+				<Cube />
+				<ControlButton control="left" />
+				<ControlButton control="right" />
+				<ControlButton control="up" />
+				<ControlButton control="down" />
+			</Grid>
+		</div>
+	);
 }
 
 export default App;
