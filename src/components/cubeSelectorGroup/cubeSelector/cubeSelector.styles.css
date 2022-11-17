@@ -33,13 +33,13 @@
 	opacity: 1;
 }
 
-.cubeSelector.parent > img {
+.cubeSelector.main > img {
 	width: 30px;
 	height: 30px;
 	margin: auto;
 }
 
-.cubeSelector.child > img {
+.cubeSelector.secondary > img {
 	width: 20px;
 	height: 20px;
 	margin: auto;

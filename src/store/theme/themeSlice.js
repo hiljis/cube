@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchTheme } from './themeAPI.js';
 
 const initialState = {
-	current: 'light',
+	current: 'blue',
 	status: 'idle',
 };
 

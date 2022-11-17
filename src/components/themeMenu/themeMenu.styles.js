@@ -1,34 +1,34 @@
 import styled from 'styled-components';
 
-export const MenuContent = styled.div`
-	width: 100%;
-	overflow: hidden;
+export const ThemeMenuContent = styled.div`
+	width: 400px;
 	padding: 100px 50px;
 `;
 
-export const MenuSectionTitle = styled.h2`
+export const ThemeMenuSectionTitle = styled.h2`
 	color: white;
-	font-weight: 300;
-	font-size: 20px;
+	font-weight: 500;
+	font-size: 24px;
 	margin-bottom: 20px;
+	font-family: 'Raleway';
 `;
 
-export const MenuContainer = styled.div`
+export const ThemeMenuContainer = styled.div`
 	width: 0;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	right: 0;
-	height: 100%;
 	background-color: blue;
+	overflow: hidden;
 	z-index: 10;
 
-	transition: all 0.2s ease-out;
+	transition: all 0.4s ease-out;
 
 	${({ isOpen }) =>
 		isOpen &&
 		`
-	width: 30%;
+	width: 400px;
 	`}
 `;
 
@@ -48,6 +48,7 @@ export const SettingWrapper = styled.div`
 
 export const SettingsLabel = styled.span`
 	color: white;
-	font-weight: 300;
+	font-weight: 400;
+	font-size: 12px;
 	margin-left: 15px;
 `;

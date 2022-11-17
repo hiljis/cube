@@ -1,0 +1,15 @@
+.themeTag {
+	font-size: 12px;
+	border-radius: 1000px;
+	padding: 5px 10px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	font-weight: 400;
+	width: min-content;
+	display: inline;
+}
+
+.themeTag:hover {
+	box-shadow: 0 0 0 1px white;
+}

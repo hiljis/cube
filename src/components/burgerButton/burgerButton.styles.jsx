@@ -1,3 +1,5 @@
+import { ToggleButton } from '../../styles/toggleButton.styles';
+
 import styled from 'styled-components';
 
 const Line = styled.div`
@@ -20,24 +22,10 @@ export const LineBottom = styled(Line)`
 	transition: transform 0.1s ease-out;
 `;
 
-export const BurgerButtonContainer = styled.div`
+export const BurgerButtonContainer = styled(ToggleButton)`
 	grid-row: 1 / 1;
 	grid-column: 8 / 9;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 50px;
-	width: 50px;
-	background-color: blue;
-	border-radius: 100px;
-	cursor: pointer;
-	z-index: 10;
-	transition: transform 0.2s ease-out, background-color 0.3s;
-
-	&:hover {
-		transform: scale(1.05);
-		box-shadow: 0 0 0 2px rgba(164, 164, 255, 1);
-	}
+	align-self: end;
 
 	&:hover > ${LineTop} {
 		transform: translateY(-7px);
@@ -50,28 +38,24 @@ export const BurgerButtonContainer = styled.div`
 	${({ isOpen }) =>
 		isOpen &&
 		`
-		background-color: white;
+			& > ${LineMiddle} {
+				opacity: 0;
+			}
 
-		& > ${LineMiddle} {
-		opacity: 0;
-	}
+			& > ${LineTop} {
+				transform: rotate(45deg);
+			}
 
-		& > ${LineTop} {
-		transform: rotate(45deg);
-		background-color: blue;
-	}
+			& > ${LineBottom} {
+				transform: rotate(-45deg);
+			}
 
-	& > ${LineBottom} {
-		transform: rotate(-45deg);
-		background-color: blue;
-	}
+			&:hover > ${LineTop} {
+				transform: rotate(45deg);
+			}
 
-	&:hover > ${LineTop} {
-		transform: rotate(45deg);
-	}
-
-	&:hover > ${LineBottom} {
-		transform: rotate(-45deg);
-	}
-	`}
+			&:hover > ${LineBottom} {
+				transform: rotate(-45deg);
+			}
+		`}
 `;

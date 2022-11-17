@@ -1,13 +1,12 @@
 import './slider.styles.css';
 
-export const Slider = ({ value, handler }) => {
-	console.log(value);
+export const Slider = ({ min, max, value, handler }) => {
 	return (
 		<div className="slidecontainer">
 			<input
 				type="range"
-				min="1"
-				max="100"
+				min={min}
+				max={max}
 				value={value}
 				className="slider"
 				id="myRange"

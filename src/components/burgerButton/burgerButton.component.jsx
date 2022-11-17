@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { selectMenuIsOpen } from '../../store/menu/menuSlice';
+import { selectThemeMenuIsOpen } from '../../store/menues/menuesSlice';
 
-import { toggleMenu } from '../../store/menu/menuSlice';
+import { toggleThemeMenu } from '../../store/menues/menuesSlice';
 
 import {
 	BurgerButtonContainer,
@@ -12,13 +12,13 @@ import {
 } from './burgerButton.styles';
 
 export const BurgerButton = () => {
-	const isOpen = useSelector(selectMenuIsOpen);
+	const isOpen = useSelector(selectThemeMenuIsOpen);
 	const dispatch = useDispatch();
 
 	return (
 		<BurgerButtonContainer
 			isOpen={isOpen}
-			onClick={() => dispatch(toggleMenu())}
+			onClick={() => dispatch(toggleThemeMenu())}
 		>
 			<LineTop />
 			<LineMiddle />
