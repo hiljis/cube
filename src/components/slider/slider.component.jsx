@@ -1,10 +1,9 @@
-import { RangeLabel } from '../settingsMenu/rangeGroups/rangeGroup/rangeGroup.styles';
-import './slider.styles.css';
+import './slider.styles.scss';
 
-export const Slider = ({ min, max, value, inputHandler, title, step }) => {
+export const Slider = ({ min, max, value, inputHandler, title, step, horizontal }) => {
 	return (
-		<div className="slidecontainer">
-			<RangeLabel>{title}</RangeLabel>
+		<div className={`sliderContainer ${horizontal ? 'horizontal' : 'vertical'}`}>
+			<label className="sliderLabel">{title}</label>
 			<input
 				style={{
 					background: `linear-gradient(to right, blue 0%, blue ${(value * 100) / max}%, #d7d7ff ${

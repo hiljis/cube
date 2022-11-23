@@ -18,8 +18,8 @@ export const GridBackground = styled.div`
 	height: 100%;
 	background: radial-gradient(
 		circle,
-		${(props) => props.theme.colors.glow} 0%,
-		white ${(props) => props.glow}%,
+		${(props) => props.color} 0%,
+		white ${(props) => props.glowAmount}%,
 		white 100%
 	);
 `;

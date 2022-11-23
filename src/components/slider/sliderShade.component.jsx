@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectShadeEffectActive, setShadeEffect } from '../../store/cube/cubeSlice';
+import { selectShadeEffect, setShadeEffect } from '../../store/cube/cubeSlice';
 import { Slider } from './slider.component';
 
-export const SliderShade = () => {
-	const shadeValue = useSelector(selectShadeEffectActive);
+export const SliderShade = ({ inputHandler, horizontal }) => {
+	const shadeValue = useSelector((state) => selectShadeEffect(state, 'active'));
 	const dispatch = useDispatch();
 
 	const handleOnInput = (e) => {
-		dispatch(setShadeEffect(e.target.value));
+		if (inputHandler) inputHandler(e.target.value);
+		else dispatch(setShadeEffect(e.target.value));
 	};
 
-	return <Slider title="shade" min={0} max={100} value={shadeValue} inputHandler={handleOnInput} step={10} />;
+	return (
+		<Slider
+			horizontal={horizontal}
+			title="shade"
+			min={0}
+			max={1}
+			value={shadeValue}
+			inputHandler={handleOnInput}
+			step={0.1}
+		/>
+	);
 };

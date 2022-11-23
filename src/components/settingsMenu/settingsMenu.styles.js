@@ -10,7 +10,6 @@ export const SettingsMenuContainer = styled.div`
 
 	background-color: white;
 	border-top: 1px solid black;
-	overflow: hidden;
 	z-index: 11;
 
 	display: flex;
@@ -33,26 +32,39 @@ export const SettingsPage = styled.div`
 	width: 100%;
 	height: 100px;
 	top: 0;
-	overflow: hidden;
 `;
 
-export const PageButton = styled.button`
+export const Pagination = styled.div`
 	position: absolute;
-	top: 50px;
-	right: 5rem;
-	transform: translateY(-50%);
-	border: none;
-	background-color: white;
-	width: 50px;
-	height: 50px;
+	top: 0;
+	right: 80px;
+
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
+`;
+
+export const PaginationText = styled.p`
+	font-size: 8px;
+	color: black;
+`;
+
+export const PaginationButton = styled.button`
+	border: 1px solid transparent;
+	width: 25px;
+	height: 25px;
 	border-radius: 50px;
+	color: black;
 	cursor: pointer;
+	background-color: white;
+
+	opacity: ${(props) => (props.hide ? 0 : 1)};
+	pointer-events: ${(props) => (props.hide ? 'none' : 'default')};
 
 	&:hover {
-		box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
-	}
-
-	path {
-		stroke: black;
+		border-color: black;
 	}
 `;

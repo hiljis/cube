@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { Theme } from '../../utils/theme';
 
 const rotate = keyframes`
 0% {
@@ -47,30 +46,21 @@ export const CubeSecondary = styled.div`
 	/** CubeSideSecondary */
 	.cubeSideSecondary {
 		background: transparent;
-		box-shadow: inset 0px 0px 0px 1px ${(props) => props.colors.secondary};
+		box-shadow: inset 0px 0px 0px 1px ${(props) => props.edgeColor};
 		opacity: ${(props) => props.opacity / 100};
 		border-radius: ${(props) => (props.isRounded ? '1000px' : '0')};
 
 		${(props) =>
 			props.isSolid &&
 			`
-			background: ${props.colors.secondary};
-			box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.5);
-		`}
-
-		${(props) =>
-			props.backgroundImage &&
-			props.isSolid &&
-			`
-			background-image: ${props.backgroundImage};
+			background: ${props.baseColor};
+			box-shadow: inset 0px 0px 0px 1px ${props.edgeColor};
 		`}
 
 		${(props) =>
 			props.shadeEffect &&
 			`
-			box-shadow: inset 0px ${-props.shadeEffect}px ${props.shadeEffect}px ${
-				props.shadeEffect / 100
-			}px ${props.colors.primary};
+			box-shadow: inset 0px ${-props.shadeEffect}px ${props.shadeEffect}px ${props.shadeEffect / 100}px ${props.shadeColor};
 		`}
 	}
 `;
@@ -142,29 +132,21 @@ export const CubeMain = styled.div`
 	/**CubeSideMain */
 	.cubeSideMain {
 		background: transparent;
-		box-shadow: inset 0px 0px 0px 1px ${(props) => props.colors.primary};
+		box-shadow: inset 0px 0px 0px 1px ${(props) => props.edgeColor};
 		opacity: ${(props) => props.opacity / 100};
 		border-radius: ${(props) => (props.isRounded ? '1000px' : '0')};
 
 		${(props) =>
 			props.isSolid &&
 			`
-			background: ${props.colors.primary};
-			box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.8);
-		`}
-
-		${(props) =>
-			props.backgroundImage !== '' &&
-			`
-			background-image: ${props.backgroundImage};
+			background: ${props.baseColor};
+			box-shadow: inset 0px 0px 0px 1px ${props.edgeColor};
 		`}
 
 		${(props) =>
 			props.shadeEffect &&
 			`
-			box-shadow: inset 0px ${-props.shadeEffect}px ${props.shadeEffect}px ${
-				props.shadeEffect / 100
-			}px ${props.colors.secondary};
+			box-shadow: inset 0px ${-props.shadeEffect}px ${props.shadeEffect}px ${props.shadeEffect / 100}px ${props.shadeColor};
 		`}
 	}
 `;

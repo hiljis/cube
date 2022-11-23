@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSpacingActive, setSpacing } from '../../store/cube/cubeSlice';
+import { selectSpacing, setSpacing } from '../../store/cube/cubeSlice';
 import { Slider } from './slider.component';
 
-export const SliderSpacing = () => {
-	const spacingValue = useSelector(selectSpacingActive);
+export const SliderSpacing = ({ inputHandler, horizontal }) => {
+	const spacingValue = useSelector((state) => selectSpacing(state, 'active'));
 	const dispatch = useDispatch();
 
 	const handleOnInput = (e) => {
-		dispatch(setSpacing(e.target.value));
+		if (inputHandler) inputHandler(e.target.value);
+		else dispatch(setSpacing(e.target.value));
 	};
 
-	return <Slider title="spacing" min={0} max={500} value={spacingValue} inputHandler={handleOnInput} step={50} />;
+	return (
+		<Slider
+			horizontal={horizontal}
+			title="spacing"
+			min={0}
+			max={500}
+			value={spacingValue}
+			inputHandler={handleOnInput}
+			step={50}
+		/>
+	);
 };

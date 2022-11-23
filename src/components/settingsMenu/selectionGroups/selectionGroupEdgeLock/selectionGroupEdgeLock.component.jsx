@@ -1,16 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	selectIsEdgeLockedActive,
-	setIsEdgeLocked,
-} from '../../../../store/cube/cubeSlice';
-import {
-	StyledLockClosedIconOutlined,
-	StyledLockOpenIconOutlined,
-} from '../../../../styles/icons.components';
-import {
-	SelectionLabel,
-	SelectionGroupContainer,
-} from '../selectionGroup.styles';
+import { selectIsEdgeLocked, setIsEdgeLocked } from '../../../../store/cube/cubeSlice';
+import { StyledLockClosedIconOutlined, StyledLockOpenIconOutlined } from '../../../../styles/icons.components';
+import { SelectionLabel, SelectionGroupContainer } from '../selectionGroup.styles';
 import { SelectionEdgeLock } from './selectionGroupEdgeLock.styles';
 
 export const SELECTION_OPEN = 'selection_open';
@@ -18,7 +9,7 @@ export const SELECTION_CLOSED = 'selection_closed';
 
 export const SelectionGroupEdgeLock = () => {
 	const dispatch = useDispatch();
-	const isEdgeLocked = useSelector(selectIsEdgeLockedActive);
+	const isEdgeLocked = useSelector((state) => selectIsEdgeLocked(state, 'active'));
 
 	const handleClick = (e) => {
 		const button = e.target.closest('button');
@@ -32,21 +23,10 @@ export const SelectionGroupEdgeLock = () => {
 		<SelectionGroupContainer onClick={handleClick}>
 			<SelectionLabel>Edge Lock</SelectionLabel>
 			<SelectionEdgeLock id={SELECTION_OPEN} isEdgeLocked={isEdgeLocked}>
-				<StyledLockOpenIconOutlined
-					height={20}
-					color="black"
-					hovercolor="black"
-				/>
+				<StyledLockOpenIconOutlined height={20} color="black" hovercolor="black" />
 			</SelectionEdgeLock>
-			<SelectionEdgeLock
-				id={SELECTION_CLOSED}
-				isEdgeLocked={isEdgeLocked}
-			>
-				<StyledLockClosedIconOutlined
-					height={20}
-					color="black"
-					hovercolor="black"
-				/>
+			<SelectionEdgeLock id={SELECTION_CLOSED} isEdgeLocked={isEdgeLocked}>
+				<StyledLockClosedIconOutlined height={20} color="black" hovercolor="black" />
 			</SelectionEdgeLock>
 		</SelectionGroupContainer>
 	);

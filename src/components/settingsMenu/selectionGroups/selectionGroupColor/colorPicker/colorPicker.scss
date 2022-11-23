@@ -1,0 +1,13 @@
+.colorPickerContainer {
+    position: absolute;
+	top: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 70px;
+
+	display: flex;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 12px;
+	overflow: hidden;
+}

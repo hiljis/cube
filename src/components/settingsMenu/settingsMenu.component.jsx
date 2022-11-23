@@ -1,6 +1,12 @@
 import { useSelector } from 'react-redux';
 import { selectSettingsMenuIsOpen } from '../../store/menues/menuesSlice';
-import { PageButton, SettingsMenuContainer, SettingsPage } from './settingsMenu.styles';
+import {
+	Pagination,
+	PaginationButton,
+	PaginationText,
+	SettingsMenuContainer,
+	SettingsPage,
+} from './settingsMenu.styles';
 import { SelectionGroupSolid } from './selectionGroups/selectionGroupSolid/selectionGroupSolid.component';
 import { SelectionGroupActive } from './selectionGroups/selectionGroupActive/selectionGroupActive.component';
 import { SelectionGroupShape } from './selectionGroups/selectionGroupShape/selectionGroupShape.component';
@@ -10,19 +16,20 @@ import { SliderSpacing } from '../slider/sliderSpacing.component';
 import { SliderShade } from '../slider/sliderShade.component';
 import { SliderGlow } from '../slider/sliderGlow.component';
 import { useState } from 'react';
-import { ReactComponent as IconArrowUp } from '../../assets/icons/svgs/arrow-up-outline.svg';
-import { ReactComponent as IconArrowDown } from '../../assets/icons/svgs/arrow-down-outline.svg';
+import { SelectionGroupColor } from './selectionGroups/selectionGroupColor/selectionGroupColor.component';
+import { SelectionGroupColorTarget } from './selectionGroups/selectionGroupColorTarget/selectionGroupColorTarget.component';
+import { SliderColorTargetOpacity } from '../slider/sliderColorTargetOpacity';
 
 export const SettingsMenu = () => {
 	const isOpen = useSelector(selectSettingsMenuIsOpen);
 	const [currentPage, setCurrentPage] = useState(1);
 
-	const handleOnPageChangeDown = () => {
-		setCurrentPage(2);
+	const decrementPage = () => {
+		if (currentPage !== 1) setCurrentPage((prev) => prev - 1);
 	};
 
-	const handleOnPageChangeUp = () => {
-		setCurrentPage(1);
+	const incrementPage = () => {
+		if (currentPage !== 3) setCurrentPage((prev) => prev + 1);
 	};
 
 	return (
@@ -35,22 +42,39 @@ export const SettingsMenu = () => {
 					<SelectionGroupEdgeLock />
 				</SettingsPage>
 			) : (
+				''
+			)}
+
+			{currentPage === 2 ? (
 				<SettingsPage page={2} currentPage={currentPage}>
 					<SliderOpacity />
 					<SliderSpacing />
 					<SliderShade />
 					<SliderGlow />
 				</SettingsPage>
+			) : (
+				''
 			)}
 
-			{currentPage === 1 ? (
-				<PageButton onClick={handleOnPageChangeDown}>
-					{/* <IconArrowUp /> */}
-					&darr;
-				</PageButton>
+			{currentPage === 3 ? (
+				<SettingsPage page={3} currentPage={currentPage}>
+					<SelectionGroupColorTarget />
+					<SelectionGroupColor />
+					<SliderColorTargetOpacity />
+				</SettingsPage>
 			) : (
-				<PageButton onClick={handleOnPageChangeUp}>&uarr;</PageButton>
+				''
 			)}
+
+			<Pagination>
+				<PaginationButton onClick={decrementPage} hide={currentPage === 1}>
+					&uarr;
+				</PaginationButton>
+				<PaginationText>{currentPage} / 3</PaginationText>
+				<PaginationButton onClick={incrementPage} hide={currentPage === 3}>
+					&darr;
+				</PaginationButton>
+			</Pagination>
 		</SettingsMenuContainer>
 	);
 };

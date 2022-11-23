@@ -1,190 +1,129 @@
 import { useSelector } from 'react-redux';
-import {
-	selectWidthMain,
-	selectHeightMain,
-	selectOpacityMain,
-	selectIsSolidMain,
-	selectRenderSecondary,
-	selectIsEdgeLockedMain,
-	selectSpacingMain,
-	selectIsRoundedMain,
-	selectWidthSecondary,
-	selectHeightSecondary,
-	selectSpacingSecondary,
-	selectOpacitySecondary,
-	selectIsSolidSecondary,
-	selectIsEdgeLockedSecondary,
-	selectIsRoundedSecondary,
-	selectShadeEffectMain,
-	selectShadeEffectSecondary,
-} from '../../store/cube/cubeSlice';
-import { selectTheme } from '../../store/theme/themeSlice';
-import { getThemeProps } from '../../utils/theme';
+import { selectRenderSecondary, selectMainCube, selectSecondaryCube } from '../../store/cube/cubeSlice';
 
-import {
-	CubeContainer,
-	CubeMain,
-	CubeSideMain,
-	CubeSecondary,
-	CubeSideSecondary,
-} from './cubes.styles.js';
+import { CubeContainer, CubeMain, CubeSideMain, CubeSecondary, CubeSideSecondary } from './cubes.styles.js';
 
 export const Cubes = () => {
-	const widthMain = useSelector(selectWidthMain);
-	const heightMain = useSelector(selectHeightMain);
-	const spacingMain = useSelector(selectSpacingMain);
-	const opacityMain = useSelector(selectOpacityMain);
-	const isSolidMain = useSelector(selectIsSolidMain);
-	const edgeLockMain = useSelector(selectIsEdgeLockedMain);
-	const isRoundedMain = useSelector(selectIsRoundedMain);
-	const shadeEffectMain = useSelector(selectShadeEffectMain) / 100;
-
-	const widthSecondary = useSelector(selectWidthSecondary);
-	const heightSecondary = useSelector(selectHeightSecondary);
-	const spacingSecondary = useSelector(selectSpacingSecondary);
-	const opacitySecondary = useSelector(selectOpacitySecondary);
-	const isSolidSecondary = useSelector(selectIsSolidSecondary);
-	const edgeLockSecondary = useSelector(selectIsEdgeLockedSecondary);
-	const isRoundedSecondary = useSelector(selectIsRoundedSecondary);
-	const shadeEffectSecondary = useSelector(selectShadeEffectSecondary) / 100;
+	const mainCube = useSelector(selectMainCube);
+	const secondaryCube = useSelector(selectSecondaryCube);
 
 	const renderChild = useSelector(selectRenderSecondary);
 
-	const theme = useSelector(selectTheme);
-	const themeProps = getThemeProps(theme);
-	const backgroundImage = themeProps.colors.backgroundImage;
+	const mainBaseColor = `rgba(${mainCube.baseColor},${mainCube.baseColorOpacity / 100})`;
+	const secondaryBaseColor = `rgba(${secondaryCube.baseColor},${secondaryCube.baseColorOpacity / 100})`;
+	const mainEdgeColor = `rgba(${mainCube.edgeColor},${mainCube.edgeColorOpacity / 100})`;
+	const secondaryEdgeColor = `rgba(${secondaryCube.edgeColor},${secondaryCube.edgeColorOpacity / 100})`;
+	const mainShadeColor = `rgba(${mainCube.shadeColor},${mainCube.shadeColorOpacity / 100})`;
+	const secondaryShadeColor = `rgba(${secondaryCube.shadeColor},${secondaryCube.shadeColorOpacity / 100})`;
 
 	return (
 		<CubeContainer>
 			<CubeMain
-				width={widthMain}
-				height={heightMain}
-				colors={themeProps.colors}
-				backgroundImage={backgroundImage}
-				isSolid={isSolidMain}
-				opacity={opacityMain}
-				isRounded={isRoundedMain}
-				shadeEffect={shadeEffectMain * heightMain}
+				width={mainCube.width}
+				height={mainCube.height}
+				baseColor={mainBaseColor}
+				edgeColor={mainEdgeColor}
+				shadeColor={mainShadeColor}
+				isSolid={mainCube.isSolid}
+				opacity={mainCube.opacity}
+				isRounded={mainCube.isRounded}
+				shadeEffect={mainCube.shadeEffect * mainCube.height}
 			>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="top"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? -heightMain : -spacingMain}
-					backgroundImage={backgroundImage}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? -mainCube.height : -mainCube.spacing}
 				/>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="bottom"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? heightMain : spacingMain}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? mainCube.height : mainCube.spacing}
 				/>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="right"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? widthMain : spacingMain}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? mainCube.width : mainCube.spacing}
 				/>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="left"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? -widthMain : -spacingMain}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? -mainCube.width : -mainCube.spacing}
 				/>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="front"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? widthMain : spacingMain}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? mainCube.width : mainCube.spacing}
 				/>
 				<CubeSideMain
 					className="cubeSideMain"
 					side="back"
-					width={widthMain}
-					height={heightMain}
-					margin={edgeLockMain ? -widthMain : -spacingMain}
+					width={mainCube.width}
+					height={mainCube.height}
+					margin={mainCube.isEdgeLocked ? -mainCube.width : -mainCube.spacing}
 				/>
 				{renderChild ? (
 					<CubeSecondary
-						width={widthSecondary}
-						height={heightSecondary}
-						colors={themeProps.colors}
-						backgroundImage={backgroundImage}
-						isSolid={isSolidSecondary}
-						opacity={opacitySecondary}
-						isRounded={isRoundedSecondary}
-						shadeEffect={shadeEffectSecondary * heightSecondary}
+						width={secondaryCube.width}
+						height={secondaryCube.height}
+						baseColor={secondaryBaseColor}
+						edgeColor={secondaryEdgeColor}
+						shadeColor={secondaryShadeColor}
+						isSolid={secondaryCube.isSolid}
+						opacity={secondaryCube.opacity}
+						isRounded={secondaryCube.isRounded}
+						shadeEffect={secondaryCube.shadeEffect * secondaryCube.height}
 					>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="top"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? -heightSecondary
-									: -spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? -secondaryCube.height : -secondaryCube.spacing}
 						/>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="bottom"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? heightSecondary
-									: spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? secondaryCube.height : secondaryCube.spacing}
 						/>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="right"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? widthSecondary
-									: spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? secondaryCube.width : secondaryCube.spacing}
 						/>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="left"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? -widthSecondary
-									: -spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? -secondaryCube.width : -secondaryCube.spacing}
 						/>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="front"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? widthSecondary
-									: spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? secondaryCube.width : secondaryCube.spacing}
 						/>
 						<CubeSideSecondary
 							className="cubeSideSecondary"
 							side="back"
-							width={widthSecondary}
-							height={heightSecondary}
-							margin={
-								edgeLockSecondary
-									? -widthSecondary
-									: -spacingSecondary
-							}
+							width={secondaryCube.width}
+							height={secondaryCube.height}
+							margin={secondaryCube.isEdgeLocked ? -secondaryCube.width : -secondaryCube.spacing}
 						/>
 					</CubeSecondary>
 				) : (

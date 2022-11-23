@@ -1,4 +1,4 @@
-.slidecontainer {
+.sliderContainer {
 	width: 10rem;
 	position: relative;
 	height: 100px;
@@ -6,7 +6,23 @@
 	align-items: center;
 }
 
-.slider {
+.sliderContainer.horizontal {
+	height: 75px;
+	width: 100%;
+	justify-content: flex-start;
+	.sliderLabel {
+		width: min-content;
+		position: static;
+		flex-grow: 0;
+		width: 175px;
+		text-align: left;
+	}
+	.slider {
+		flex-grow: 1;
+	}
+}
+
+.sliderContainer .slider {
 	-webkit-appearance: none;
 	appearance: none;
 	width: 100%;
@@ -44,4 +60,19 @@
 
 .slider::-moz-range-thumb:hover {
 	opacity: 1;
+}
+
+.sliderLabel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-size: 8px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	color: #777;
+	margin-top: 5px;
+	text-transform: uppercase;
 }

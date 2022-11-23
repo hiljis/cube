@@ -1,22 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	selectGlow,
+	selectGlowAmount,
 	selectOpacityActive,
 	selectShadeEffectActive,
 	selectSpacingActive,
-	setGlow,
+	setGlowAmount,
 	setOpacity,
 	setShadeEffect,
 	setSpacing,
 } from '../../../store/cube/cubeSlice.js';
 import { store } from '../../../store/store.js';
 import './pieIndicator.styles.js';
-import {
-	DraggableInvisibleOverlay,
-	Pie,
-	PieContainer,
-} from './pieIndicator.styles.js';
+import { DraggableInvisibleOverlay, Pie, PieContainer } from './pieIndicator.styles.js';
 
 const TARGET_OPACITY = 'opacity';
 const TARGET_SPACING = 'spacing';
@@ -32,7 +28,7 @@ const getActionFunc = (target) => {
 		case TARGET_SHADE_EFFECT:
 			return setShadeEffect;
 		case TARGET_GLOW:
-			return setGlow;
+			return setGlowAmount;
 		default:
 			return null;
 	}
@@ -47,7 +43,7 @@ const getSelector = (target) => {
 		case TARGET_SHADE_EFFECT:
 			return selectShadeEffectActive;
 		case TARGET_GLOW:
-			return selectGlow;
+			return selectGlowAmount;
 		default:
 			return null;
 	}

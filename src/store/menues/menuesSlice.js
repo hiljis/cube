@@ -1,29 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	themeMenuIsOpen: false,
+	colorMenuIsOpen: false,
 	settingsMenuIsOpen: false,
+	activeColorMenuItem: 'none',
+	cubeToEdit: 'main',
 	status: 'idle',
 };
 
 export const menuesSlice = createSlice({
 	name: 'menues',
 	initialState,
-	// The `reducers` field lets us define reducers and generate associated actions
 	reducers: {
 		toggleThemeMenu: (state) => {
-			state.themeMenuIsOpen = !state.themeMenuIsOpen;
+			state.colorMenuIsOpen = !state.colorMenuIsOpen;
 		},
 		toggleSettingsMenu: (state) => {
 			state.settingsMenuIsOpen = !state.settingsMenuIsOpen;
 		},
+		setActiveColorMenuItem: (state, action) => {
+			state.activeColorMenuItem = action.payload;
+		},
+		setCubeToEdit: (state, action) => {
+			state.cubeToEdit = action.payload;
+		},
 	},
 });
 
-export const { toggleThemeMenu, toggleSettingsMenu } = menuesSlice.actions;
+export const { toggleThemeMenu, toggleSettingsMenu, setActiveColorMenuItem, setCubeToEdit } = menuesSlice.actions;
 
-export const selectThemeMenuIsOpen = (state) => state.menues.themeMenuIsOpen;
-export const selectSettingsMenuIsOpen = (state) =>
-	state.menues.settingsMenuIsOpen;
+export const selectColorMenuIsOpen = (state) => state.menues.colorMenuIsOpen;
+export const selectSettingsMenuIsOpen = (state) => state.menues.settingsMenuIsOpen;
+export const selectActiveColorMenuItem = (state) => state.menues.activeColorMenuItem;
+export const selectCubeToEdit = (state) => state.menues.cubeToEdit;
 
 export default menuesSlice.reducer;
