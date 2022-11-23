@@ -7,10 +7,11 @@ export const SelectionGroupContainer = styled.div`
 	align-items: center;
 	gap: 5px;
 	height: 100px;
+	width: 160px;
 `;
 
 export const Selection = styled.button`
-	position: relative;
+	${'' /* position: relative; */}
 	width: 50px;
 	height: 50px;
 	display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Cubes } from './components/cube/cubes.component.jsx';
 import './App.css';
 import { BurgerButton } from './components/burgerButton/burgerButton.component';
@@ -12,7 +12,7 @@ import { Welcome } from './components/welcome/welcome.component.jsx';
 function App() {
 	return (
 		<div className="App">
-			{/* <Welcome /> */}
+			<Welcome />
 			<Grid>
 				<ThemeMenu />
 				<BurgerButton />

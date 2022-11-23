@@ -14,9 +14,7 @@ export const SettingsMenuContainer = styled.div`
 	z-index: 11;
 
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 100px;
+	flex-direction: column;
 
 	transition: all 0.4s ease-out;
 
@@ -27,15 +25,34 @@ export const SettingsMenuContainer = styled.div`
 		`}
 `;
 
-export const SelectionGroups = styled.div`
-	height: 100%;
-
+export const SettingsPage = styled.div`
 	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 	gap: 50px;
-
-	bottom: 0;
+	width: 100%;
+	height: 100px;
+	top: 0;
+	overflow: hidden;
 `;
 
-export const RangeGroups = styled(SelectionGroups)`
-	gap: 30px;
+export const PageButton = styled.button`
+	position: absolute;
+	top: 50px;
+	right: 5rem;
+	transform: translateY(-50%);
+	border: none;
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	path {
+		stroke: black;
+	}
 `;

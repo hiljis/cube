@@ -5,7 +5,7 @@ export const StyledBackgroundWelcome = styled.div`
 	right: 0;
 	top: 0;
 
-	display: flex;
+	display: ${(props) => (props.remove ? 'none' : 'flex')};
 	justify-content: center;
 	align-items: center;
 

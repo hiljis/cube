@@ -6,10 +6,7 @@ import {
 	selectRenderSecondary,
 	setActive,
 } from '../../../../store/cube/cubeSlice';
-import {
-	SelectionLabel,
-	SelectionGroupContainer,
-} from '../selectionGroup.styles';
+import { SelectionLabel, SelectionGroupContainer } from '../selectionGroup.styles';
 import {
 	SelectionActive,
 	SelectionAddSecondary,
@@ -30,9 +27,7 @@ export const SelectionGroupActive = () => {
 		const button = e.target.closest('button');
 		if (!button) return;
 		const id = button.id;
-		id === SELECTION_ADD
-			? dispatch(addSecondary())
-			: dispatch(setActive(id));
+		id === SELECTION_ADD ? dispatch(addSecondary()) : dispatch(setActive(id));
 	};
 
 	const handleDoubleClick = (e) => {
@@ -43,10 +38,7 @@ export const SelectionGroupActive = () => {
 	};
 
 	return (
-		<SelectionGroupContainer
-			onClick={handleClick}
-			onDoubleClick={handleDoubleClick}
-		>
+		<SelectionGroupContainer onClick={handleClick} onDoubleClick={handleDoubleClick}>
 			<SelectionLabel>Active</SelectionLabel>
 			<SelectionActive id={SELECTION_MAIN} activeCube={activeCube}>
 				<StyledIconNumber>
@@ -55,10 +47,7 @@ export const SelectionGroupActive = () => {
 			</SelectionActive>
 
 			{renderSecondary ? (
-				<SelectionActive
-					id={SELECTION_SECONDARY}
-					activeCube={activeCube}
-				>
+				<SelectionActive id={SELECTION_SECONDARY} activeCube={activeCube}>
 					<StyledIconNumber>
 						<span>2</span>
 					</StyledIconNumber>

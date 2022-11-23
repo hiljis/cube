@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import {
 	selectWidthMain,
 	selectHeightMain,
-	selectMargin,
 	selectOpacityMain,
 	selectIsSolidMain,
 	selectRenderSecondary,

@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 import { Selection } from '../selectionGroup.styles';
-import {
-	SELECTION_MAIN,
-	SELECTION_SECONDARY,
-} from './selectionGroupActive.component';
+import { SELECTION_MAIN, SELECTION_SECONDARY } from './selectionGroupActive.component';
 
 export const SelectionActive = styled(Selection)`
 	${(props) =>
